@@ -1,0 +1,29 @@
+#all_image_carousel
+{
+height: 150px;
+
+}
+#selected_image_carousel{
+
+  height: 100px;
+}
+#image_view_pannel
+{
+  height: 20rem;
+  margin: 1%;
+  background: gray;
+}
+
+.carousel {
+  background: black;
+  width: 100%;
+}
+
+/* set to flexbox to center the images with the indicator icons */
+.carousel-item {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+
