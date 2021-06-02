@@ -1,4 +1,5 @@
 
+  <div style="background: black;">
   <div class="container carousel tooltipped" data-position="bottom" data-delay="50" data-tooltip="Selected Images" id="selected_image_carousel">
     <a class="carousel-item" ><img src="./../../assets/1.JPG"></a>
     <a class="carousel-item" ><img src="./../../assets/2.jpg"></a>
@@ -9,14 +10,15 @@
   </div>
 
 
-<div class="row" id="image_view_pannel">
 
 
-</div>
+  <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 
 
 
 
+
+<!--
 <div class="footer">
   <div class="row " id="all_image_pannel">
 
@@ -29,5 +31,6 @@
       <a class="carousel-item" ><img src="./../../assets/4.jpg"></a>
   </div>
 
-</div></div>
+</div></div> -->
 
+</div>

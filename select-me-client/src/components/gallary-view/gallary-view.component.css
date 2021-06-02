@@ -1,3 +1,24 @@
+ngx-gallery >>> ngx-gallery-image .ngx-gallery-arrow {
+
+}
+ngx-gallery >>> ngx-gallery-thumbnails .ngx-gallery-arrow {
+  background-color: red;
+}
+ngx-gallery >>> ngx-gallery-preview .ngx-gallery-arrow {
+  background-color: yellow;
+}
+
+ngx-gallery >>> .ngx-gallery-thumbnail.ngx-gallery-active {
+  background-color: papayawhip;
+}
+body {
+  margin: 0;
+}
+.gallery-item {
+  margin: 5px;
+}
+
+
 #all_image_carousel
 {
 height: 150px;

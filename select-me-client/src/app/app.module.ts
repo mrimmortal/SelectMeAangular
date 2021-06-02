@@ -13,6 +13,7 @@ import{GallaryViewModule} from 'src/components/gallary-view/gallary-view.module'
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     GallaryViewModule
   ],
   providers: [],
