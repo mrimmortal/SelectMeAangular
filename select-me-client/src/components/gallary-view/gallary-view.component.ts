@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryAction } from 'ngx-gallery-9';
 
 import * as M from "materialize-css/dist/js/materialize";
 declare var $: any;
@@ -11,12 +11,18 @@ declare var $: any;
 export class GallaryViewComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  galleryAction: { icon: string; onClick: any; }[];
+  handleClick: any;
 
   constructor() { }
 
-
-
   ngOnInit(): void {
+
+  const deleteAction = new NgxGalleryAction({ disabled: false, icon: 'fa fa-remove', titleText: 'Remove image', 
+  onClick: () => { console.log(deleteAction)} });
+
+
+  
 
     this.galleryOptions = [
       {
@@ -27,6 +33,7 @@ export class GallaryViewComponent implements OnInit {
           imageSwipe:true,
           thumbnailsArrows:true,
           thumbnailsColumns: 5,
+          thumbnailActions: [ deleteAction ],
           thumbnailsRemainingCount: true,
           imageSize: "contain",
           preview: false,
@@ -124,7 +131,7 @@ export class GallaryViewComponent implements OnInit {
 }
   ];
 
-
+  
 
     $('.tooltipped').tooltip({delay: 50});
     var elems = document.querySelectorAll('#selected_image_carousel');
@@ -140,7 +147,15 @@ export class GallaryViewComponent implements OnInit {
       padding: 100,
 
     });
+
+
+  // this.handleClick=this.handleClick.bind(this);
+  // this.galleryAction=[{ icon:"TestData", onClick: this.handleClickMethod() }];
   }
+
+//   handleClickMethod(){
+// console.log("Hello")
+//   }
 
 
   show(index: number){}
