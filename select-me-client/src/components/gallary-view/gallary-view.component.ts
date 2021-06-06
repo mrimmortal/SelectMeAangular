@@ -10,6 +10,8 @@ declare var $: any;
 })
 export class GallaryViewComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
+  SelectedOptions: NgxGalleryOptions[];
+  SelectedImage: NgxGalleryImage[] = [];
   galleryImages: NgxGalleryImage[];
   galleryAction: { icon: string; onClick: any; }[];
   handleClick: any;
@@ -18,9 +20,61 @@ export class GallaryViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-  const deleteAction = new NgxGalleryAction({ disabled: false, icon: 'fa fa-remove', titleText: 'Remove image', 
-  onClick: () => { console.log(deleteAction)} });
+  const seletedImage = new NgxGalleryAction({ disabled: false, icon: 'fa fa-check', titleText: 'Remove image', 
+  onClick: (event,index) => { 
+    // console.log(this.galleryImages[index].big)
+    this.SelectedImage.push(this.galleryImages[index])
+    
+    this.galleryImages.splice(index,1)
+    console.log(this.SelectedImage.length)
+    
+    console.log(this.galleryImages.length)
+  } });
 
+  const deleteImage = new NgxGalleryAction({ disabled: false, icon: 'fa fa-remove', titleText: 'Remove image', 
+  onClick: (event,index) => { 
+    // console.log(this.galleryImages[index].big)
+    this.galleryImages.push(this.SelectedImage[index])
+    
+    this.SelectedImage.splice(index,1)
+  } });
+  
+
+  this.SelectedOptions = [
+    {
+        width: '100%',
+        height: '200px',
+        fullWidth:false,
+        imageArrows:true,
+        imageSwipe:true,
+        thumbnailsArrows:true,
+        thumbnailsColumns: 5,
+        thumbnailActions: [ deleteImage ],
+        thumbnailsRemainingCount: true,
+        imageSize: "contain",
+        preview: false,
+        image:false,
+        previewFullscreen:false,
+        previewForceFullscreen:false,
+        imageAnimation: NgxGalleryAnimation.Slide
+    },
+    // max-width 800
+    {
+        breakpoint: 800,
+        width: '100%',
+        height: '200px',
+        imagePercent: 80,
+        preview: false,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 20,
+        thumbnailMargin: 20
+    },
+    // max-width 400
+    {
+        breakpoint: 400,
+        preview: false
+    }
+];
 
   
 
@@ -33,7 +87,7 @@ export class GallaryViewComponent implements OnInit {
           imageSwipe:true,
           thumbnailsArrows:true,
           thumbnailsColumns: 5,
-          thumbnailActions: [ deleteAction ],
+          thumbnailActions: [ seletedImage ],
           thumbnailsRemainingCount: true,
           imageSize: "contain",
           preview: false,
@@ -147,17 +201,7 @@ export class GallaryViewComponent implements OnInit {
       padding: 100,
 
     });
-
-
-  // this.handleClick=this.handleClick.bind(this);
-  // this.galleryAction=[{ icon:"TestData", onClick: this.handleClickMethod() }];
   }
-
-//   handleClickMethod(){
-// console.log("Hello")
-//   }
-
-
   show(index: number){}
 showNext(){}
 showPrev()
